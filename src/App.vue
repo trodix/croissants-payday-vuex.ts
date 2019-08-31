@@ -15,7 +15,7 @@
         target="_blank"
       >
         <span class="mr-2">Enhance me on Githut</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon>mdi-github-circle</v-icon>
       </v-btn>
       <v-btn>
         <v-icon>mdi-account</v-icon>
@@ -65,14 +65,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-
-export default interface MenuItem {
-  title: string;
-  icon: string;
-  link: string;
-}
+import { Vue, Component } from 'vue-property-decorator';
+import { MenuItem } from './store/models';
 
 @Component({}) // define component and init settings/configuration
 export default class App extends Vue {
