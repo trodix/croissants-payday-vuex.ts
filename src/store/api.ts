@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { Payday, User, UserResponse, UserSubmit } from '@/store/models';
+import axios, { AxiosResponse } from 'axios';
+import { ApiResponse, Payday, User, UserResponse, UserSubmit } from '@/store/models';
 
 export const api = axios.create({
   baseURL: 'http://localhost:3000/v1',
@@ -15,7 +15,7 @@ export const api = axios.create({
 
 // export async function loginUser(user: UserSubmit): Promise<User|undefined> {
 //   try {
-//     const response = await axios.post('/login', {
+//     const response = await api.post('/login', {
 //       user,
 //     });
 //     return (response.data as UserResponse).user;
@@ -24,7 +24,8 @@ export const api = axios.create({
 //   }
 // }
 
-export async function findAllPaydays(): Promise<Payday> {
-  const response = await axios.get('/paydays');
-  return response.data;
+export async function findAllPaydays(): Promise<AxiosResponse<ApiResponse>> {
+  console.log("findAllPaydays");
+  const axiosResponse = await api.get('/paydays');
+  return axiosResponse;
 }

@@ -1,7 +1,8 @@
 import { VuexModule, Module, getModule, Action, Mutation } from 'vuex-module-decorators';
 import store from '@/store';
-import { Payday } from '../models';
+import { Payday, ApiResponse } from '../models';
 import { findAllPaydays } from '../api';
+import { AxiosResponse } from 'axios';
 
 
 @Module({
@@ -10,7 +11,7 @@ import { findAllPaydays } from '../api';
   name: 'paydays',
   store,
 })
-class PaydayModule extends VuexModule {
+class PaydaysModule extends VuexModule {
   paydays: Payday[] = [];
 
   @Mutation
@@ -18,9 +19,13 @@ class PaydayModule extends VuexModule {
 
   @Action({ commit: 'setPaydays' })
   async getAllPaydays() {
-    const paydays = await findAllPaydays();
+    const axiosResponse: AxiosResponse<ApiResponse> = await findAllPaydays();
+    const serverResponse: ApiResponse = axiosResponse.data;
+    console.log(serverResponse.message);
+    const paydays: Payday[] = serverResponse.data;
+    console.log(paydays);
     return { paydays };
   }
 }
 
-export default getModule(PaydayModule);
+export default getModule(PaydaysModule);
