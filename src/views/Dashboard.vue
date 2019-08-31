@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <ul v-for="payday in paydays" :key="payday._id">
-      <li>{{ paydays._id }}</li>
+    <ul v-for="payday in paydays" :key="payday.player">
+      <li>{{ paydays.player }}</li>
     </ul>
   </div>
 </template>
@@ -9,23 +9,21 @@
 <script lang="ts">
 
 import { Vue, Component } from 'vue-property-decorator';
-import { getModule } from 'vuex-module-decorators';
-import paydays from '../store/modules/paydays';
+import PaydaysModule from '../store/modules/Paydays';
+import { Payday } from '../store/models';
 
-const paydaysState = getModule(paydays);
-
-// const paydayModule = namespace("payday");
-
-// @paydayModule.State
-// paydays: Payday[];
 
 @Component({})
 export default class Dashboard extends Vue {
 
+  paydays: Payday[] = [];
 
-mounted() {
-  paydaysState.getAllPaydays();
-}
+  constructor() {
+    super();
+    PaydaysModule.getAllPaydays();
+    this.paydays = PaydaysModule.paydays;
+    console.log(this.paydays);
+  }
 
 }
 

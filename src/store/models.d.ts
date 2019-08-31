@@ -4,8 +4,13 @@ export interface MenuItem {
   link: string;
 }
 
+export interface ApiResponse {
+  message: string,
+  data?: any
+}
+
 export interface Payday {
-  _id: string;
+  _id?: string;
   player: string|object;
   rule: string|object;
   date: Date;
@@ -13,7 +18,7 @@ export interface Payday {
 }
 
 export interface User {
-  _id: string;
+  _id?: string;
   email: string,
   token: string,
   username: string,
