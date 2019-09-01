@@ -1,5 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { ApiResponse, Payday, User, UserResponse, UserSubmit } from '@/store/models';
+import { Observable } from 'rxjs';
+import { AxiosObservable } from 'axios-observable/dist/axios-observable.interface';
 
 export const api = axios.create({
   baseURL: 'http://localhost:3000/v1',
@@ -24,8 +26,15 @@ export const api = axios.create({
 //   }
 // }
 
-export async function findAllPaydays(): Promise<AxiosResponse<ApiResponse>> {
-  console.log("findAllPaydays");
-  const axiosResponse = await api.get('/paydays');
-  return axiosResponse;
+// export function findAllPaydays() {
+//   // console.log("findAllPaydays");
+//   console.log("@api findAllPaydays()", window.performance.now());
+//   const observer = api.get('/paydays');
+//   console.log(observer, window.performance.now());
+//   return observer;
+// }
+
+export async function findAllPaydays() {
+  const response = await api.get('/paydays');
+  return response;
 }
