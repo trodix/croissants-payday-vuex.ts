@@ -34,10 +34,6 @@ export default class Dashboard extends Vue {
     return PaydaysModule.paydays;
   }
 
-  getPaydays() {
-    PaydaysModule.getAllPaydays();
-  }
-
 }
 
 </script>
