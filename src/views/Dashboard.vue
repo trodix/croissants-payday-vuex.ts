@@ -1,39 +1,25 @@
 <template>
-  <div class="container">
-    <v-flex>
-      <template v-if="paydays !== undefined && paydays.length > 0">
-        <ul v-for="payday in paydays" :key="payday._id">
-          <li>{{ payday.player }}</li>
-        </ul>
-      </template>
-      <template v-else>
-        <v-progress-circular indeterminate></v-progress-circular>
-        <span>Loading data</span>
-      </template>
-    </v-flex>
-
-  </div>
+  <v-flex class="container">
+    <h1>List of paydays</h1>
+    <PaydaysList maxWidth="500"></PaydaysList>
+  </v-flex>
 </template>
 
 <script lang="ts">
 
-import { Vue, Component, PropSync } from 'vue-property-decorator';
-import PaydaysModule from '../store/modules/Paydays';
-import { Payday } from '../store/models';
+import { Vue, Component } from 'vue-property-decorator';
+import PaydaysList from '@/components/PaydaysList.vue';
 
-
-@Component({})
+@Component({
+  components: {
+    PaydaysList
+  }
+})
 export default class Dashboard extends Vue {
-
-  constructor() {
-    super();
-    PaydaysModule.getAllPaydays();
-  }
-
-  get paydays(): Payday[] {
-    return PaydaysModule.paydays;
-  }
 
 }
 
 </script>
+<style lang="scss" scoped>
+
+</style>

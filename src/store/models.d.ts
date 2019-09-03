@@ -15,6 +15,8 @@ export interface Payday {
   rule: string|object;
   date: Date;
   payed: boolean;
+  created_at?: Date,
+  updatedAt?: Date
 }
 
 export interface User {

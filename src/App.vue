@@ -87,3 +87,17 @@ export default class App extends Vue {
 
 }
 </script>
+
+<style lang="scss">
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+</style>

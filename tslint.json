@@ -16,6 +16,7 @@
     "ordered-imports": false,
     "quotemark": [true, "single"],
     "member-access": [true, "no-public"],
-    "no-string-literal": false
+    "no-string-literal": false,
+    "trailing-comma": false
   }
 }
